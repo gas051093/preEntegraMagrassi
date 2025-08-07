@@ -16,6 +16,23 @@ router.get('/:pid', async (req, res) => {
     res.json(product);
 })
 router.post("/", async (req, res) => {
+  const required = [
+    "title",
+    "description",
+    "code",
+    "price",
+    "status",
+    "stock",
+    "category",
+    "thumbnails",
+  ];
+  const missingRequired = required.filter((field) => !(field in req.body));
+  if (missingRequired.length > 0) { 
+    return res.status(400).json({
+      error: `Faltan campos obligatorios: ${missingRequired.join(", ")}`,
+    });
+  }
+  
   try {
     const newProduct = await manager.addProducts(req.body);
     res.status(201).json(newProduct);
