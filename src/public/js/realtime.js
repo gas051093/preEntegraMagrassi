@@ -1,6 +1,7 @@
 const socket = io();
 const tbody = document.getElementById("tbody");
 const formCreate = document.getElementById("formCreateProduct");
+const formDelete = document.getElementById("formDeleteProduct");
 const createMsg = document.getElementById("createMsg");
 
 const addRow = (p) => {
@@ -47,13 +48,35 @@ socket.on("products:init", (products) => {
 
 socket.on("product:error", ({ message }) => {
   if (createMsg) createMsg.textContent = message || "Error";
-  setTimeout(() => (createMsg.textContent = ""), 3000);
+  setTimeout(() => (createMsg.textContent = ""), 9000);
 });
 
 socket.on("product:created", (product) => {
   addRow(product); 
   if (createMsg) {
     createMsg.textContent = "Producto creado ✔";
+    setTimeout(() => (createMsg.textContent = ""), 2000);
+  }
+});
+
+formDelete.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const data = new FormData(formDelete);
+  const id = parseInt(data.get("id"), 10);
+  if (Number.isNaN(id)) {
+    if (createMsg) createMsg.textContent = "ID inválido";
+    return;
+  }
+  socket.emit("product:delete", { id });
+  formDelete.reset();
+  if (createMsg) createMsg.textContent = "Enviando…";
+});
+
+socket.on("product:deleted", ({ id }) => {
+  const row = tbody.querySelector(`tr[data-id="${id}"]`);
+  if (row) row.remove();
+  if (createMsg) {
+    createMsg.textContent = "Producto eliminado ✔";
     setTimeout(() => (createMsg.textContent = ""), 2000);
   }
 });

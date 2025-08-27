@@ -37,7 +37,7 @@ io.on("connection", async (socket) => {
     });
   }
 
-  socket.on("product:create", async (product) => {
+  socket.on("product:create", async (payload) => {
     try {
       const required = [
         "title",
@@ -50,7 +50,7 @@ io.on("connection", async (socket) => {
         "thumbnails",
       ];
       const missing = required.filter(
-        (f) => !(f in product) || product[f] === "" || product[f] === undefined
+        (f) => !(f in payload) || payload[f] === "" || payload[f] === undefined
       );
       if (missing.length) {
         socket.emit("product:error", {
@@ -59,26 +59,45 @@ io.on("connection", async (socket) => {
         return;
       }
       const product = {
-        ...product,
-        price: Number(product.price),
-        stock: parseInt(product.stock, 10),
+        ...payload,
+        price: Number(payload.price),
+        stock: parseInt(payload.stock, 10),
         status:
-          product.status === true ||
-          product.status === "true" ||
-          product.status === "on" ||
-          product.status === "1",
-        thumbnails: Array.isArray(product.thumbnails)
-          ? product.thumbnails
-          : String(product.thumbnails ?? "")
+          payload.status === true ||
+          payload.status === "true" ||
+          payload.status === "on" ||
+          payload.status === "1",
+        thumbnails: Array.isArray(payload.thumbnails)
+          ? payload.thumbnails
+          : String(payload.thumbnails ?? "")
               .split(",")
               .map((s) => s.trim())
               .filter(Boolean),
       };
 
       const created = await manager.addProducts(product);
-      io.emit("product:created", created); // broadcast a todas las pestañas
+      io.emit("product:created", created); 
     } catch (e) {
-      socket.emit("product:error", { message: "Error al crear producto." });
+      socket.emit("product:error", { message: `${e} Error al crear producto.` });
+    }
+  });
+  socket.on("product:delete", async ({ id }) => {
+    try {
+      const numId = parseInt(id, 10);
+      if (Number.isNaN(numId)) {
+        socket.emit("product:error", { message: "ID inválido." });
+        return;
+      }
+      const deleted = await manager.deleteProduct(numId);
+      if (!deleted) {
+        socket.emit("product:error", { message: "Producto no encontrado." });
+        return;
+      }
+      io.emit("product:deleted", { id: numId });
+    } catch (e) {
+      socket.emit("product:error", {
+        message: "Error al eliminar producto.",
+      });
     }
   });
 });

@@ -1,35 +1,36 @@
-<h2>Lista de productos con WebSocket</h2>
+<h2 class="titleRealTime">Lista de productos con WebSocket</h2>
 
 
-<div>
+<div class="">
     <h3>Formulario de alta de producots</h3>
-    <form action="submit" id="formCreateProduct">
+    <form class="" action="submit" id="formCreateProduct">
+        <div class="formContainer">
         <label for="title">Nombre:</label>
-        <input required type="text" name="title" id="title">
+        <input class="inputStyle" required type="text" name="title" id="title">
         <label for="description">Descripcion:</label>
-        <input required type="text" name="description" id="description">
+        <input class="inputStyle" required type="text" name="description" id="description">
         <label for="code">Codigo:</label>
-        <input required type="text" name="code" id="code">
+        <input class="inputStyle" required type="text" name="code" id="code">
         <label for="price">Precio:</label>
-        <input required type="number" min="0" name="price" id="price">
+        <input class="inputStyle"  required type="number" name="price" id="price" min="0" step="0.01" inputmode="decimal">
         <label for="status">Estado:</label>
-        <select name="status" id="status">
+        <select class="inputStyle" name="status" id="status">
             <option value="activo">Activo</option>
             <option value="inactivo">Inactivo</option>
         </select>
         <label for="stock">Stock:</label>
-        <input required min="0" type="number" name="stock" id="stock">
+        <input class="inputStyle" required min="0" type="number" name="stock" id="stock">
         <label for="category">Categoria:</label>
-        <input required type="text" name="category" id="category">
+        <input class="inputStyle" required type="text" name="category" id="category">
         <label for="thumbnails">URL images</label>
-        <input required type="text" name="thumbnails" id="thumbnails">
-        <button type="submit">Cargar</button>
+        <input class="inputStyle" required type="text" name="thumbnails" id="thumbnails">
+        </div>
+        <button class="btn" type="submit">Cargar</button>
     </form>
-    <p id="createMsg"></p>
 </div>
 
 
-<table>
+<table class="table">
     <thead>
       <tr>
         <th>ID</th>
@@ -46,5 +47,16 @@
     </tbody>
 </table>
 
+<div>
+    <h3>Formulario para eliminar productos por WS</h3>
+    <form id="formDeleteProduct">
+        <label for="id">Numero de ID:</label>
+          <input class="inputStyle" type="number" name="id" min="0" required />
+        <button class="btn">Eliminar</button>
+    </form>
+</div>
+<div>
+    <h4 id="createMsg"></h4>
+</div>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/realtime.js"></script>
