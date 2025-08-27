@@ -1,0 +1,50 @@
+<h2>Lista de productos con WebSocket</h2>
+
+
+<div>
+    <h3>Formulario de alta de producots</h3>
+    <form action="submit" id="formCreateProduct">
+        <label for="title">Nombre:</label>
+        <input required type="text" name="title" id="title">
+        <label for="description">Descripcion:</label>
+        <input required type="text" name="description" id="description">
+        <label for="code">Codigo:</label>
+        <input required type="text" name="code" id="code">
+        <label for="price">Precio:</label>
+        <input required type="number" min="0" name="price" id="price">
+        <label for="status">Estado:</label>
+        <select name="status" id="status">
+            <option value="activo">Activo</option>
+            <option value="inactivo">Inactivo</option>
+        </select>
+        <label for="stock">Stock:</label>
+        <input required min="0" type="number" name="stock" id="stock">
+        <label for="category">Categoria:</label>
+        <input required type="text" name="category" id="category">
+        <label for="thumbnails">URL images</label>
+        <input required type="text" name="thumbnails" id="thumbnails">
+        <button type="submit">Cargar</button>
+    </form>
+    <p id="createMsg"></p>
+</div>
+
+
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Código</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Categoría</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+
+    </tbody>
+</table>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realtime.js"></script>

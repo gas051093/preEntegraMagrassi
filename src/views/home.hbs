@@ -1,0 +1,33 @@
+<h1>Lista de productos</h1>
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Código</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Categoría</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each products}}
+        <tr>
+          <td>{{id}}</td>
+          <td>{{title}}</td>
+          <td>{{code}}</td>
+          <td>$ {{price}}</td>
+          <td>{{stock}}</td>
+          <td>{{category}}</td>
+          <td>
+            {{#if status}}
+              <span class="badge">Activo</span>
+            {{else}}
+              <span class="badge">Inactivo</span>
+            {{/if}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>

@@ -1,35 +1,56 @@
 [
-  {
-    "id": 1,
-    "title": "Auriculares Inalámbricos Bluetooth",
-    "description": "Auriculares con cancelación de ruido y estuche de carga",
-    "code": "AUR-001",
-    "price": 15999,
-    "status": true,
-    "stock": 25,
-    "category": "Audio",
-    "thumbnails": ["images/auriculares1.jpg", "images/auriculares2.jpg"]
-  },
-  {
-    "id": 2,
-    "title": "Mouse Gamer RGB",
-    "description": "Mouse ergonómico con 7 botones programables y luces LED",
-    "code": "MSE-045",
-    "price": 8999,
-    "status": true,
-    "stock": 50,
-    "category": "Accesorios",
-    "thumbnails": ["images/mouse1.jpg"]
-  },
-  {
-    "id": 3,
-    "title": "Teclado Mecánico Retroiluminado",
-    "description": "Teclado mecánico con switches blue y retroiluminación RGB",
-    "code": "TCL-200",
-    "price": 12999,
-    "status": true,
-    "stock": 30,
-    "category": "Periféricos",
-    "thumbnails": ["images/teclado1.jpg", "images/teclado2.jpg"]
-  }
+	{
+		"id": 1,
+		"title": "Auriculares Inalámbricos Bluetooth",
+		"description": "Auriculares con cancelación de ruido y estuche de carga",
+		"code": "AUR-001",
+		"price": 15999,
+		"status": true,
+		"stock": 25,
+		"category": "Audio",
+		"thumbnails": [
+			"images/auriculares1.jpg",
+			"images/auriculares2.jpg"
+		]
+	},
+	{
+		"id": 2,
+		"title": "Mouse Gamer RGB",
+		"description": "Mouse ergonómico con 7 botones programables y luces LED",
+		"code": "MSE-045",
+		"price": 8999,
+		"status": true,
+		"stock": 50,
+		"category": "Accesorios",
+		"thumbnails": [
+			"images/mouse1.jpg"
+		]
+	},
+	{
+		"id": 3,
+		"title": "Teclado Mecánico Retroiluminado",
+		"description": "Teclado mecánico con switches blue y retroiluminación RGB",
+		"code": "TCL-200",
+		"price": 12999,
+		"status": true,
+		"stock": 30,
+		"category": "Periféricos",
+		"thumbnails": [
+			"images/teclado1.jpg",
+			"images/teclado2.jpg"
+		]
+	},
+	{
+		"id": 4,
+		"title": "Parlante EV ELX215",
+		"description": "Caja doble 15'' pasiva",
+		"code": "EV-ELX215-A",
+		"price": 950000,
+		"status": true,
+		"stock": 8,
+		"category": "audio",
+		"thumbnails": [
+			"elx215.jpg"
+		]
+	}
 ]
