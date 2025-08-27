@@ -1,8 +1,10 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
+  user-select: none;
 }
 .titleRealTime {
   text-align: center;
+  font-size: 2em;
 }
 .titleHome {
    text-align: center; 
@@ -63,4 +65,7 @@
 }
 .btn:hover{
     background-color: #283e69;
+}
+.btn:active{
+  background-color: #000000;
 }

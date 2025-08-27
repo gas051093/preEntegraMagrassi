@@ -11,6 +11,7 @@ const productsRouter = require("./routes/productsRouter");
 const viewsRouter = require("./routes/viewsRouter");
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.engine("hbs", engine({ extname: ".hbs" }));
 app.set("view engine", "hbs");
 app.set("views", "./src/views");
@@ -26,17 +27,17 @@ const serverHTTP = app.listen(PORT, () => {
 });
 
 const io = new Server(serverHTTP);
+app.set("io", io);
 
 io.on("connection", async (socket) => {
   try {
     const products = await manager.getAll();
     socket.emit("products:init", products);
   } catch {
-    socket.emit("products:error", {
+    socket.emit("product:error", {
       message: "No se pudo cargar la lista inicial.",
     });
   }
-
   socket.on("product:create", async (payload) => {
     try {
       const required = [

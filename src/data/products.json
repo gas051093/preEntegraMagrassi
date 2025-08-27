@@ -1,16 +1,46 @@
 [
-	{
-		"id": 1,
-		"title": "Auriculares Inalámbricos Bluetooth",
-		"description": "Auriculares con cancelación de ruido y estuche de carga",
-		"code": "AUR-001",
-		"price": 15999,
-		"status": true,
-		"stock": 25,
-		"category": "Audio",
-		"thumbnails": [
-			"images/auriculares1.jpg",
-			"images/auriculares2.jpg"
-		]
-	}
+  {
+    "id": 1,
+    "title": "Micrófono Shure SM58",
+    "description": "Micrófono dinámico cardioide para voces en vivo",
+    "code": "SHURE-SM58",
+    "price": 160000,
+    "status": true,
+    "stock": 20,
+    "category": "audio",
+    "thumbnails": ["img/sm58.jpg"]
+  },
+  {
+    "id": 2,
+    "title": "Par LED 18x10W RGBW",
+    "description": "Par LED wash con DMX y mezcla RGBW",
+    "code": "LED-PAR-18x10W",
+    "price": 220000.5,
+    "status": true,
+    "stock": 16,
+    "category": "iluminacion",
+    "thumbnails": ["par_led_18x10w.jpg"]
+  },
+  {
+    "id": 3,
+    "title": "Consola Behringer X32",
+    "description": "Consola digital de 32 canales con efectos integrados",
+    "code": "BEHR-X32",
+    "price": 3200000,
+    "status": true,
+    "stock": 3,
+    "category": "audio",
+    "thumbnails": ["e.cbehr_x32.jpg"]
+  },
+  {
+    "id": 4,
+    "title": "Pantalla Proyector 120\" 16:9",
+    "description": "Pantalla de proyección enrollable, formato 16:9",
+    "code": "SCR-120-16x9",
+    "price": 240000,
+    "status": false,
+    "stock": 0,
+    "category": "video",
+    "thumbnails": ["screen_120.jpg"]
+  }
 ]
